@@ -1,0 +1,146 @@
+/*moonwhite(minty seafoam): #c2f1dd*/
+/*darkgreen: #7cbca0*/
+*{
+	box-sizing: border-box;
+	user-select: none;
+}
+
+html{
+	margin: 0;
+	height: 100%;
+	width: 100%;
+}
+
+body{
+	background-color: #c2f1dd;
+	font-family: 'Questrial', sans-serif;
+	height: 100%;
+	width: 100%;
+	margin: 0;
+}
+
+#appHolder{
+	padding: 10px;
+	background-color: #d4d4d4;
+	height: 90%;
+	width: 90%;
+	font-size: 2.5rem;
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	border-radius: 1rem;
+}
+
+#introduction{
+	height: 80%;
+	width: 80%;
+	text-align: center;
+	visibility: visible;
+	opacity: 1;
+	margin: 0;
+	line-height: 2.6rem;
+	position: absolute;
+	top: 40%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+}
+
+#welcomeHeader{
+	line-height: 4rem;
+}
+
+input[type="text"] {
+    font-size:40px;
+}
+
+#gameBoard{
+	visibility: hidden;
+	opacity: 0;
+	height: 100%;
+	width: 100%;
+}
+
+#nameHolder{
+	font-size: 4rem;
+	padding: 15% 10% 15% 10%;
+	height: 3rem;
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+	align-items: center;
+}
+
+.nameHolder{
+	text-align: center;
+}
+
+#diceHolder{
+	display: block;
+	background-image: url("./DieFaces/cubes.png");
+	background-repeat: no-repeat;
+	background-size: contain;
+	height: 20rem;
+	width: 20rem;
+	position: relative;
+	left: 50%;
+	transform: translateX(-50%);
+}
+
+#rollButton{
+	position: relative;
+	left: 50%;
+	transform: translateX(-50%);
+	height: 8rem;
+	width: 30rem;
+	background-color: #c2f1dd;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	margin: 5% 0% 5% 0%;
+	border-radius: 1rem;
+	border: 2px solid black;
+	font-size: 4rem;
+	box-shadow: 10px 10px 0px 0px grey;
+}
+
+#rollButton:active{
+	box-shadow: 10px 10px 0px 0px grey inset;
+}
+
+#playerPanels{
+	padding: 8%;
+	text-align: center;
+}
+
+#playerOnePanel{
+	font-size: 3.2rem;
+	float: left;
+}
+
+#playerTwoPanel{
+	font-size: 3.2rem;
+	float: right;
+}
+
+.darkGreenText{
+	font-size: 5rem;
+	color: #7cbca0;
+}
+
+.holdButtons{
+	height: 5rem;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	margin: 5% 0% 5% 0%;
+	border-radius: 1rem;
+	border: 2px solid black;
+	font-size: 3.2rem;
+	background-color: #c2f1dd;
+	box-shadow: 10px 10px 0px 0px grey;
+}
+
+.holdButtons:active{
+	box-shadow: 10px 10px 0px 0px grey inset;
+}
