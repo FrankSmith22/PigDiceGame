@@ -5,9 +5,9 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0">
 		<title>PIG</title>
 		<link href="https://fonts.googleapis.com/css?family=Questrial" rel="stylesheet">
-		<link rel="stylesheet" href="stylesGrid.css?v=<?php echo date( "U" );?>">
+		<link rel="stylesheet" href="styles.css?v=<?php echo date( "U" );?>">
 		<script src="L.js"></script>
-		<script src="scriptGrid.js?v=<?php echo date( "U" );?>"></script>
+		<script src="script.js?v=<?php echo date( "U" );?>"></script>
 		<script src="m.js?v=<?php echo date( "U" );?>"></script>
 	</head>
 	<body>
