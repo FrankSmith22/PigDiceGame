@@ -6,8 +6,8 @@
 c.initialize = function(){
 	L.attachAllElementsById(v);
 	c.startGame();
-	v.playerOneNameInput.addEventListener('keydown', ()=>{if(eo.which == 13 || eo.keyCode == 13){c.setPlayers()}});
-	v.playerTwoNameInput.addEventListener('keydown', ()=>{if(eo.which == 13 || eo.keyCode == 13){c.setPlayers()}});
+	v.playerOneNameInput.addEventListener('keydown', (eo)=>{if(eo.which == 13 || eo.keyCode == 13){c.setPlayers(eo)}});
+	v.playerTwoNameInput.addEventListener('keydown', (eo)=>{if(eo.which == 13 || eo.keyCode == 13){c.setPlayers(eo)}});
 	v.playerOneHoldButton.addEventListener('mousedown', ()=>{if(m.playerOne.turnActive){c.hold(m.playerOne, m.playerTwo)}});
 	v.playerTwoHoldButton.addEventListener('mousedown', ()=>{if(m.playerTwo.turnActive){c.hold(m.playerTwo, m.playerOne)}});
 	v.rollButton.addEventListener('mousedown', ()=>{
@@ -32,7 +32,7 @@ c.setPlayers = function(eo){
 		m.playerTwo.name = v.playerTwoNameInput.value;
 		
 		c.hideIntroduction();
-		c.displayGameBoard();
+		c.showGameBoard();
 	}
 };
 
@@ -51,7 +51,7 @@ c.hideGameBoard = function(){
 	v.gameBoard.style.opacity = "0";
 };
 
-c.displayGameBoard = function(){
+c.showGameBoard = function(){
 	v.gameBoard.style.visibility = "visible";
 	v.gameBoard.style.opacity = "1";
 	
@@ -142,7 +142,9 @@ c.updateScores = function(){
 		v.rollButton.style.backgroundColor = "#a7a7a7";
 		v.rollButton.style.boxShadow = "none";
 	}
-	c.updateButtons();
+	else{
+		c.updateButtons();
+	}
 };
 
 c.updateButtons = function(){
@@ -151,13 +153,13 @@ c.updateButtons = function(){
 		v.playerTwoHoldButton.style.boxShadow = "none";
 		
 		v.playerOneHoldButton.style.backgroundColor = "#c2f1dd";
-		v.playerOneHoldButton.style.boxShadow = "10px 10px 0px 0px grey";
+		v.playerOneHoldButton.style.boxShadow = "7px 7px 0px 0px grey";
 	}
 	else{
 		v.playerOneHoldButton.style.backgroundColor = "#a7a7a7";
 		v.playerOneHoldButton.style.boxShadow = "none";
 		
 		v.playerTwoHoldButton.style.backgroundColor = "#c2f1dd";
-		v.playerTwoHoldButton.style.boxShadow = "10px 10px 0px 0px grey";
+		v.playerTwoHoldButton.style.boxShadow = "7px 7px 0px 0px grey";
 	}
 };
