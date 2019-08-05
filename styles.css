@@ -154,6 +154,13 @@ body{
     place-items: center;
 }
 
+.turnTotals{
+	opacity: 1;
+	transition-property: all;
+	transition-duration: .6s;
+	transition-timing-function: cubic-bezier(0.02, 0.5, 0.58, 1);
+}
+
 #diceHolder{
 	grid-column: 1 / 3;
 	

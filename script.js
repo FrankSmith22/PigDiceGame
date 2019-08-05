@@ -14,6 +14,7 @@ c.initialize = function(){
 		if(m.playerOne.turnActive){c.roll(m.playerOne, m.playerTwo)}
 							  else{c.roll(m.playerTwo, m.playerOne)}
 	})
+	//alert('WARNING: currently being worked on; very buggy');
 };
 
 c.startGame = function(){
@@ -77,16 +78,21 @@ c.roll = function(activePlayer, inactivePlayer){
 
 c.hold = function(activePlayer, inactivePlayer){
 	if(m.gameIsWon){return;}
-	console.log('holding your turn total!');
-	activePlayer.overallTotal += activePlayer.turnTotal;
-	console.log(`your overall total is now ${activePlayer.overallTotal}`);
-	console.log(`moving onto ${inactivePlayer.name}'s turn`);
-	activePlayer.turnTotal = 0;
-	
-	activePlayer.turnActive = false;
-	inactivePlayer.turnActive = true;
-	c.updateScores();
-	c.roll(inactivePlayer, activePlayer);
+	let activeTurnTotalElement = c.transitionTurnTotal(activePlayer);
+	setTimeout(()=>{
+		activeTurnTotalElement.style.removeProperty('transform');
+		activeTurnTotalElement.style.opacity = '1';
+		console.log('holding your turn total!');
+		activePlayer.overallTotal += activePlayer.turnTotal;
+		console.log(`your overall total is now ${activePlayer.overallTotal}`);
+		console.log(`moving onto ${inactivePlayer.name}'s turn`);
+		activePlayer.turnTotal = 0;
+		
+		activePlayer.turnActive = false;
+		inactivePlayer.turnActive = true;
+		c.updateScores();
+		c.roll(inactivePlayer, activePlayer);
+	}, 600);
 };
 
 c.checkDiceValue = function(activePlayer, diceRoll, inactivePlayer){
@@ -115,6 +121,10 @@ c.completeGame = function(activePlayer){
 	alert(`Congratulations ${activePlayer.name}! You won! To play again, reload the page`);
 	c.updateScores();
 };
+
+
+//HELPER FUNCTIONS
+
 
 c.showDiceFace = function(diceRoll){
 	v.diceHolder.style.backgroundImage = `url('./DieFaces/dice-six-faces-${diceRoll}.png')`;
@@ -163,3 +173,17 @@ c.updateButtons = function(){
 		v.playerTwoHoldButton.style.boxShadow = "7px 7px 0px 0px grey";
 	}
 };
+
+c.transitionTurnTotal = function(activePlayer){
+	let activeTurnTotalElement;
+	if(activePlayer == m.playerOne){
+		activeTurnTotalElement = v.playerOneTurnTotal;
+	}
+	else{
+		activeTurnTotalElement = v.playerTwoTurnTotal;
+	}
+	activeTurnTotalElement.style.transform = "translateY(-150%)";
+	activeTurnTotalElement.style.opacity = "0.15";
+	
+	return activeTurnTotalElement;
+}

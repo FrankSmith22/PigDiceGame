@@ -36,7 +36,7 @@
 					<div id="playerOneOverallTitle" class="normalText">Overall Total</div>
 					<div id="playerOneOverallTotal" class="darkGreenText">00</div>
 					<div id="playerOneTurnTitle" class="normalText">Turn Total</div>
-					<div id="playerOneTurnTotal" class="darkGreenText">00</div>
+					<div id="playerOneTurnTotal" class="darkGreenText turnTotals">00</div>
 				</div>
 				<div id="playerOneHoldButton" class="holdButtons">HOLD</div>
 				
@@ -44,7 +44,7 @@
 					<div id="playerTwoOverallTitle" class="normalText">Overall Total</div>
 					<div id="playerTwoOverallTotal" class="darkGreenText">00</div>
 					<div id="playerTwoTurnTitle" class="normalText">Turn Total</div>
-					<div id="playerTwoTurnTotal" class="darkGreenText">00</div>
+					<div id="playerTwoTurnTotal" class="darkGreenText turnTotals">00</div>
 				</div>
 				<div id="playerTwoHoldButton" class="holdButtons">HOLD</div>
 			</div>
