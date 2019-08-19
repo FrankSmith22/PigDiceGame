@@ -35,6 +35,7 @@ c.setPlayers = function(eo){
 		c.hideIntroduction();
 		c.showGameBoard();
 	}
+	//TODO add modal to tell players to fill fields
 };
 
 c.hideIntroduction = function(){
@@ -58,7 +59,6 @@ c.showGameBoard = function(){
 	
 	c.updateNames();
 	c.updateScores();
-	console.log('Okay, player one starts out');
 	c.roll(m.playerOne, m.playerTwo);
 };
 
@@ -71,7 +71,6 @@ c.roll = function(activePlayer, inactivePlayer){
 		c.checkDiceValue(activePlayer, m.dice, inactivePlayer);
 	}
 	else{
-		console.log('bad number, trying again...');
 		c.roll(activePlayer, inactivePlayer);
 	}
 };
@@ -82,10 +81,7 @@ c.hold = function(activePlayer, inactivePlayer){
 	setTimeout(()=>{
 		activeTurnTotalElement.style.removeProperty('transform');
 		activeTurnTotalElement.style.opacity = '1';
-		console.log('holding your turn total!');
 		activePlayer.overallTotal += activePlayer.turnTotal;
-		console.log(`your overall total is now ${activePlayer.overallTotal}`);
-		console.log(`moving onto ${inactivePlayer.name}'s turn`);
 		activePlayer.turnTotal = 0;
 		
 		activePlayer.turnActive = false;
@@ -99,13 +95,10 @@ c.checkDiceValue = function(activePlayer, diceRoll, inactivePlayer){
 	if(diceRoll !== 1){
 		activePlayer.turnTotal += diceRoll;
 		if((activePlayer.turnTotal + activePlayer.overallTotal) >= 100){c.completeGame(activePlayer)}
-		console.log(`###You rolled a ${diceRoll}###`);
 		c.updateScores();
-		console.log(`${activePlayer.name}, Now you can either roll again to try and get another non-1 and increase your turn total, or you can hold to add your turn total to your overall(permanent) total.`);
 		//awaiting decision...
 	}
 	else{
-		console.log(`!!!Sorry, ${activePlayer.name}, you rolled a 1! Moving onto ${inactivePlayer.name}'s turn`);
 		alert(`!!!Sorry, ${activePlayer.name}, you rolled a 1! Moving onto ${inactivePlayer.name}'s turn`);
 		activePlayer.turnTotal = 0;
 		activePlayer.turnActive = false;
@@ -117,13 +110,22 @@ c.checkDiceValue = function(activePlayer, diceRoll, inactivePlayer){
 
 c.completeGame = function(activePlayer){
 	m.gameIsWon = true;
-	console.log(`Congratulations ${activePlayer.name}! You won! To play again, reload the page`);
 	alert(`Congratulations ${activePlayer.name}! You won! To play again, reload the page`);
+	Object.freeze(m.playerOne);
+	Object.freeze(m.playerTwo);
 	c.updateScores();
 };
 
 
+
+
+
+
 //HELPER FUNCTIONS
+
+
+
+
 
 
 c.showDiceFace = function(diceRoll){
