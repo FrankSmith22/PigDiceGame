@@ -69,7 +69,7 @@ c.hideIntroduction = function(){
 c.showIntroduction = function(){
 	v.introductionContainer.style.visibility = "visible";
 	v.introductionContainer.style.opacity = "1";
-	setTimeout(()=>{alert('WARNING: currently being worked on; very buggy')}, 200)
+	//setTimeout(()=>{alert('WARNING: currently being worked on; very buggy')}, 200)
 };
 
 c.hideGameBoard = function(){
