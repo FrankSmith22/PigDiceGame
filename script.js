@@ -14,7 +14,7 @@ c.initialize = function(){
 		if(m.playerOne.turnActive){c.roll(m.playerOne, m.playerTwo)}
 							  else{c.roll(m.playerTwo, m.playerOne)}
 	})
-	//alert('WARNING: currently being worked on; very buggy');
+	alert('WARNING: currently being worked on; very buggy');
 };
 
 c.startGame = function(){
@@ -96,10 +96,11 @@ c.checkDiceValue = function(activePlayer, diceRoll, inactivePlayer){
 		activePlayer.turnTotal += diceRoll;
 		if((activePlayer.turnTotal + activePlayer.overallTotal) >= 100){c.completeGame(activePlayer)}
 		c.updateScores();
-		//awaiting decision...
+		//awaiting roll or hold decision...
 	}
 	else{
-		alert(`!!!Sorry, ${activePlayer.name}, you rolled a 1! Moving onto ${inactivePlayer.name}'s turn`);
+		//activate oneRolledModal
+		c.showRolledOneModal(activePlayer);
 		activePlayer.turnTotal = 0;
 		activePlayer.turnActive = false;
 		inactivePlayer.turnActive = true;
@@ -110,6 +111,7 @@ c.checkDiceValue = function(activePlayer, diceRoll, inactivePlayer){
 
 c.completeGame = function(activePlayer){
 	m.gameIsWon = true;
+	//activate wonModal
 	alert(`Congratulations ${activePlayer.name}! You won! To play again, reload the page`);
 	Object.freeze(m.playerOne);
 	Object.freeze(m.playerTwo);
@@ -188,4 +190,19 @@ c.transitionTurnTotal = function(activePlayer){
 	activeTurnTotalElement.style.opacity = "0.15";
 	
 	return activeTurnTotalElement;
+}
+
+c.showRolledOneModal = function(activePlayer){
+	v.oneRolledModal.innerHTML = `<span style="color:black"><b style="color:red">${activePlayer.name}</b> has rolled a 1!</span>`
+	v.oneRolledModal.style.visibility = "visible";
+	v.oneRolledModal.style.opacity = 1;
+	v.oneRolledModal.style.top = "15%";
+	setTimeout(()=>{
+		v.oneRolledModal.style.top = "-10%";
+		v.oneRolledModal.style.opacity = 0;
+		setTimeout(()=>{
+			v.oneRolledModal.style.visibility = "hidden";
+		}, 500);
+	}, 500);
+	
 }

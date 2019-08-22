@@ -209,6 +209,38 @@ body{
 	grid-column: 2 / 3;
 }
 
+/*
+	MODAL
+*/
+
+#oneRolledModal{
+	visibility: hidden;/*set to visible*/
+	opacity: 0;/*transition to 1*/
+	background-color: #7cbca0;
+    color: #ff3636;
+    font-size: 2rem;
+    border-radius: 1rem;
+    border: 2px solid black;
+    box-shadow: 7px 7px 0px 0px grey;
+	position: absolute;
+	top: -16%;/*transition to 15%*/
+	left: 50%;
+	transform: translateX(-50%);
+	height: 15%;
+    width: 45%;
+    text-align: center;
+    padding: 10px;
+	transition: top .5s, opacity .5s;
+	transition-timing-function: cubic-bezier(0, 0.7, 0.25, 1);
+}
+
+#oneRolledModal span{
+	width: 100%;
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+}
 
 /*
 	GAMEBOARD LANDSCAPE

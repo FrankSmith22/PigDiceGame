@@ -14,7 +14,9 @@
 		<div id="appHolder">
 			<div id="introductionContainer">
 				<div id="welcomeHeader">Welcome to PIG! A game about rolling dice</div>
-				<div id="rules">Two players take turns rolling a dice, where the face of the dice determines your accumulating points(your turn total). However, rolling a 1 at any point sets your turn total back down to 0, so it is sometimes wise to hold your points permanently so they will not be lost, and then the turn will pass to the other player. First to 100 points wins!</div>
+				<div id="rules">Two players take turns rolling a dice, where the face of the dice determines your accumulating points(your turn total). 
+				However, rolling a 1 at any point sets your turn total back down to 0, so it is sometimes wise to hold your points permanently(your overall total) so they will not be lost, 
+				and then the turn will pass to the other player. First to 100 points wins!</div>
 				<div id="introQuestion">Who will be the two players?</div>
 				<div id="playerOneHeader">Player one: <input id="playerOneNameInput" size="12" type="text" maxlength="6"></div>
 				<div id="playerTwoHeader">Player two: <input id="playerTwoNameInput" size="12" type="text" maxlength="6"></div>
@@ -48,6 +50,9 @@
 				</div>
 				<div id="playerTwoHoldButton" class="holdButtons">HOLD</div>
 			</div>
+		</div>
+		<div id="oneRolledModal" class="modals">
+			<span>MissingNo. rolled a one!</span>
 		</div>
 		<script>/*global c*/window.addEventListener("load", c.initialize)</script>
 	</body>
