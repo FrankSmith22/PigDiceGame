@@ -1,41 +1,64 @@
 /*global L*/
-//m={};
-  v={};
-  c={};
+//let m={};
+let  v={};
+let  c={};
 
 c.initialize = function(){
 	L.attachAllElementsById(v);
-	c.startGame();
-	v.playerOneNameInput.addEventListener('keydown', (eo)=>{if(eo.which == 13 || eo.keyCode == 13){c.setPlayers(eo)}});
-	v.playerTwoNameInput.addEventListener('keydown', (eo)=>{if(eo.which == 13 || eo.keyCode == 13){c.setPlayers(eo)}});
+	c.resetGame();
+	v.startButton.addEventListener('mousedown', ()=>{c.setPlayers()})
+	v.playerOneNameInput.addEventListener('keydown', (eo)=>{if(eo.which == 13 || eo.keyCode == 13){c.setPlayers()}});
+	v.playerTwoNameInput.addEventListener('keydown', (eo)=>{if(eo.which == 13 || eo.keyCode == 13){c.setPlayers()}});
 	v.playerOneHoldButton.addEventListener('mousedown', ()=>{if(m.playerOne.turnActive){c.hold(m.playerOne, m.playerTwo)}});
 	v.playerTwoHoldButton.addEventListener('mousedown', ()=>{if(m.playerTwo.turnActive){c.hold(m.playerTwo, m.playerOne)}});
 	v.rollButton.addEventListener('mousedown', ()=>{
 		if(m.playerOne.turnActive){c.roll(m.playerOne, m.playerTwo)}
 							  else{c.roll(m.playerTwo, m.playerOne)}
 	})
-	alert('WARNING: currently being worked on; very buggy');
-};
-
-c.startGame = function(){
-	m.gameIsWon = false;
-	m.rollableNums = [ 1,2,3,4,5,6 ];
-	m.dice = 0;
-	m.playerOne.turnActive = true;
+	v.reload.addEventListener('mousedown', ()=>{window.location.reload()})
+	v.reloadWPlayers.addEventListener('mousedown', ()=>{c.setPlayers(m.playerOne.name, m.playerTwo.name)})
+	v.dismiss.addEventListener('mousedown', c.hideVictoryModal)
 	
 	c.showIntroduction();
 	c.hideGameBoard();
 };
 
-c.setPlayers = function(eo){
-	if(v.playerOneNameInput.value !== "" && v.playerTwoNameInput.value !== ""){
+c.resetGame = function(){
+	m.gameIsWon = false;
+	m.rollableNums = [ 1,2,3,4,5,6 ];
+	m.dice = 0;
+	m.playerOne.turnActive = true;
+	
+	m.playerOne.turnTotal = 0;
+	m.playerOne.overallTotal = 0;
+	m.playerTwo.turnTotal = 0;
+	m.playerTwo.overallTotal = 0;
+};
+
+c.setPlayers = function(playerOneName = null, playerTwoName = null){
+	if(playerOneName != null && playerTwoName != null){
+		c.hideVictoryModal();
+		c.resetGame();
+		c.hideIntroduction();
+		c.showGameBoard();//c.updateNames() and c.updateScores() are also called here
+		v.rollButton.style.backgroundColor = "#c2f1dd";
+		v.rollButton.style.boxShadow = "7px 7px 0px 0px grey";
+		c.roll(m.playerOne, m.playerTwo);
+		return;
+	}
+	else if(v.playerOneNameInput.value !== "" && v.playerTwoNameInput.value !== ""){
 		m.playerOne.name = v.playerOneNameInput.value;
 		m.playerTwo.name = v.playerTwoNameInput.value;
 		
 		c.hideIntroduction();
 		c.showGameBoard();
+		c.roll(m.playerOne, m.playerTwo);
 	}
-	//TODO add modal to tell players to fill fields
+	else{
+		//TODO add modal to tell players to fill fields
+		alert("please fill in both fields for names");
+	}
+	
 };
 
 c.hideIntroduction = function(){
@@ -46,6 +69,7 @@ c.hideIntroduction = function(){
 c.showIntroduction = function(){
 	v.introductionContainer.style.visibility = "visible";
 	v.introductionContainer.style.opacity = "1";
+	setTimeout(()=>{alert('WARNING: currently being worked on; very buggy')}, 200)
 };
 
 c.hideGameBoard = function(){
@@ -59,7 +83,6 @@ c.showGameBoard = function(){
 	
 	c.updateNames();
 	c.updateScores();
-	c.roll(m.playerOne, m.playerTwo);
 };
 
 c.roll = function(activePlayer, inactivePlayer){
@@ -111,10 +134,7 @@ c.checkDiceValue = function(activePlayer, diceRoll, inactivePlayer){
 
 c.completeGame = function(activePlayer){
 	m.gameIsWon = true;
-	//activate wonModal
 	c.showWinModal(activePlayer);
-	Object.freeze(m.playerOne);
-	Object.freeze(m.playerTwo);
 	c.updateScores();
 };
 
@@ -211,4 +231,10 @@ c.showWinModal = function(activePlayer){
 	v.playerVictoryModal.style.visibility = "visible";
 	v.playerVictoryModal.style.opacity = 1;
 	v.playerVictoryModal.style.top = "50%";
+}
+
+c.hideVictoryModal = function(){
+	v.playerVictoryModal.style.visibility = "hidden";
+	v.playerVictoryModal.style.opacity = 0;
+	v.playerVictoryModal.style.top = "-28%"
 }

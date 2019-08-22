@@ -20,7 +20,7 @@
 				<div id="introQuestion">Who will be the two players?</div>
 				<div id="playerOneHeader">Player one: <input id="playerOneNameInput" size="12" type="text" maxlength="6"></div>
 				<div id="playerTwoHeader">Player two: <input id="playerTwoNameInput" size="12" type="text" maxlength="6"></div>
-				<div id="startButton" onclick="c.setPlayers()" class="noSelect">start game</div>
+				<div id="startButton" class="noSelect">start game</div>
 			</div>
 			<div id="gameBoard">
 				<div id="nameOneHolder" class="normalText">Player One
@@ -56,13 +56,13 @@
 		</div>
 		<div id="playerVictoryModal" class="modals">
 			<span id="winMessage"><b>MissingNo.</b>, you have won!</span>
-			<div id="reload" >
+			<div id="reload">
 				<span>Reload</span>
 			</div>
-			<div id="reloadWPlayers" >
+			<div id="reloadWPlayers">
 				<span>Reload Same Players</span>
 			</div>
-			<div id="dismiss" >
+			<div id="dismiss">
 				<span>Dismiss</span>
 			</div>
 		</div>
