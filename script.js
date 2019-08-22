@@ -112,7 +112,7 @@ c.checkDiceValue = function(activePlayer, diceRoll, inactivePlayer){
 c.completeGame = function(activePlayer){
 	m.gameIsWon = true;
 	//activate wonModal
-	alert(`Congratulations ${activePlayer.name}! You won! To play again, reload the page`);
+	c.showWinModal(activePlayer);
 	Object.freeze(m.playerOne);
 	Object.freeze(m.playerTwo);
 	c.updateScores();
@@ -204,5 +204,11 @@ c.showRolledOneModal = function(activePlayer){
 			v.oneRolledModal.style.visibility = "hidden";
 		}, 500);
 	}, 500);
-	
+}
+
+c.showWinModal = function(activePlayer){
+	v.winMessage.innerHTML = `<span id="winMessage"><b style="color:#55ff55">${activePlayer.name}</b>, you have won!</span>`
+	v.playerVictoryModal.style.visibility = "visible";
+	v.playerVictoryModal.style.opacity = 1;
+	v.playerVictoryModal.style.top = "50%";
 }

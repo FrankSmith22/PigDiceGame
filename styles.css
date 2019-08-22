@@ -210,28 +210,32 @@ body{
 }
 
 /*
-	MODAL
+	MODALS
 */
+
+
+.modals{
+	background-color: #7cbca0;
+    border-radius: 1rem;
+    border: 2px solid black;
+    box-shadow: 7px 7px 0px 0px grey;
+    transition: top .5s, opacity .5s;
+	transition-timing-function: cubic-bezier(0, 0.7, 0.25, 1);
+}
 
 #oneRolledModal{
 	visibility: hidden;/*set to visible*/
 	opacity: 0;/*transition to 1*/
-	background-color: #7cbca0;
-    color: #ff3636;
+	color: #ff3636;
     font-size: 2rem;
-    border-radius: 1rem;
-    border: 2px solid black;
-    box-shadow: 7px 7px 0px 0px grey;
 	position: absolute;
 	top: -16%;/*transition to 15%*/
 	left: 50%;
 	transform: translateX(-50%);
-	height: 15%;
-    width: 45%;
+	height: 15vh;
+    width: 45vw;
     text-align: center;
     padding: 10px;
-	transition: top .5s, opacity .5s;
-	transition-timing-function: cubic-bezier(0, 0.7, 0.25, 1);
 }
 
 #oneRolledModal span{
@@ -241,6 +245,52 @@ body{
 	left: 50%;
 	transform: translate(-50%, -50%);
 }
+
+#playerVictoryModal{
+	visibility: hidden;/*transition to visible*/
+	opacity: 0;/*transition to 1*/
+	height: 50vh;
+	width: 65vw;
+	position: absolute;
+	top: -28%;/*transition to 50%*/
+	left: 50%;
+	transform: translate(-50%, -50%);
+	color: black;
+	display: grid;
+	grid-template-rows: 60% 40%;
+	grid-template-areas: 
+	"winMessage      winMessage        winMessage"
+	"reload        reloadWPlayers      dismiss";
+}
+
+#playerVictoryModal div, #playerVictoryModal span{
+	align-self: center;
+	justify-self: center;
+	text-align: center;
+}
+
+#playerVictoryModal div{/*buttons*/
+	display: grid;
+	background-color: #c2f1dd;
+    border-radius: 1rem;
+    border: 2px solid black;
+    box-shadow: 5px 5px 0px 0px grey;
+    width: 85%;
+    height: 40%;
+}
+
+#playerVictoryModal div span{/*text inside buttons*/
+	align-self: center;
+	justify-self: center;
+	font-size: 1rem;
+	font-weight: bold;
+}
+
+#winMessage{grid-area: winMessage; font-size:2rem;}
+#reload{grid-area: reload;}
+#reloadWPlayers{grid-area: reloadWPlayers;}
+#dismiss{grid-area: dismiss;}
+
 
 /*
 	GAMEBOARD LANDSCAPE

@@ -54,6 +54,18 @@
 		<div id="oneRolledModal" class="modals">
 			<span>MissingNo. rolled a one!</span>
 		</div>
+		<div id="playerVictoryModal" class="modals">
+			<span id="winMessage"><b>MissingNo.</b>, you have won!</span>
+			<div id="reload" >
+				<span>Reload</span>
+			</div>
+			<div id="reloadWPlayers" >
+				<span>Reload Same Players</span>
+			</div>
+			<div id="dismiss" >
+				<span>Dismiss</span>
+			</div>
+		</div>
 		<script>/*global c*/window.addEventListener("load", c.initialize)</script>
 	</body>
 </html>
