@@ -56,14 +56,14 @@
 		</div>
 		<div id="playerVictoryModal" class="modals">
 			<span id="winMessage"><b>MissingNo.</b>, you have won!</span>
-			<div id="reload">
+			<div id="reload" class="victoryButtons">
 				<span>Reload</span>
 			</div>
-			<div id="reloadWPlayers">
+			<div id="reloadWPlayers" class="victoryButtons">
 				<span>Reload Same Players</span>
 			</div>
 			<div id="dismiss">
-				<span>Dismiss</span>
+				<span>X</span>
 			</div>
 		</div>
 		<script>/*global c*/window.addEventListener("load", c.initialize)</script>

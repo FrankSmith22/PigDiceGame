@@ -1,4 +1,3 @@
-
 /*moonwhite(minty seafoam): #c2f1dd*/
 /*darkgreen: #7cbca0*/
 *{
@@ -258,28 +257,31 @@ body{
 	color: black;
 	display: grid;
 	grid-template-rows: 60% 40%;
+	grid-template-columns: 50% 50%;
 	grid-template-areas: 
-	"winMessage      winMessage        winMessage"
-	"reload        reloadWPlayers      dismiss";
+	"winMessage      winMessage"
+	"reload        reloadWPlayers";
 }
 
-#playerVictoryModal div, #playerVictoryModal span{
+.victoryButtons, #playerVictoryModal span{
 	align-self: center;
 	justify-self: center;
 	text-align: center;
 }
 
-#playerVictoryModal div{/*buttons*/
+.victoryButtons{/*buttons*/
 	display: grid;
 	background-color: #c2f1dd;
     border-radius: 1rem;
     border: 2px solid black;
     box-shadow: 5px 5px 0px 0px grey;
     width: 85%;
+    max-width: 225px;
     height: 40%;
+    cursor: pointer;
 }
 
-#playerVictoryModal div span{/*text inside buttons*/
+.victoryButtons span{/*text inside buttons*/
 	align-self: center;
 	justify-self: center;
 	font-size: 1rem;
@@ -289,7 +291,26 @@ body{
 #winMessage{grid-area: winMessage; font-size:2rem;}
 #reload{grid-area: reload;}
 #reloadWPlayers{grid-area: reloadWPlayers;}
-#dismiss{grid-area: dismiss;}
+
+#dismiss{
+	grid-column: 2/3;
+	grid-row: 1/2;
+	justify-self: end;
+	align-self: start;
+	border-radius: 1rem;
+    border: 2px solid black;
+    box-shadow: 5px 5px 0px 0px grey;
+    height: 6vh;
+    width: 6vh;
+    display: grid;
+    background-color: #ff3636;
+    cursor: pointer;
+}
+
+#dismiss span{
+	justify-self: center;
+	align-self: center;
+}
 
 
 /*
