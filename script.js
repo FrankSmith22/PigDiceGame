@@ -234,7 +234,8 @@ c.showWinModal = function(activePlayer){
 }
 
 c.hideVictoryModal = function(){
-	v.playerVictoryModal.style.visibility = "hidden";
 	v.playerVictoryModal.style.opacity = 0;
-	v.playerVictoryModal.style.top = "-28%"
+	setTimeout(()=>{
+			v.playerVictoryModal.style.visibility = "hidden";
+	}, 500);
 }
