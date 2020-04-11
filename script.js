@@ -227,7 +227,7 @@ c.showRolledOneModal = function(activePlayer){
 }
 
 c.showWinModal = function(activePlayer){
-	v.winMessage.innerHTML = `<span id="winMessage"><b style="color:#55ff55">${activePlayer.name}</b>, you have won!</span>`
+	v.winMessage.innerHTML = `<span id="winMessage"><b style="color:#2e7d2e">${activePlayer.name}</b>, you have won!</span>`
 	v.playerVictoryModal.style.visibility = "visible";
 	v.playerVictoryModal.style.opacity = 1;
 	v.playerVictoryModal.style.top = "50%";
